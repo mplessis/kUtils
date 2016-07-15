@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetCore", "NetCore", "{DEDCD8C8-D936-4D9B-BCD8-DF6E57EFDD49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{09C0FDEA-5D29-4EE9-8386-DB490A264AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kopigi.Portable", "Portable\Kopigi.Portable\Kopigi.Portable.csproj", "{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NET45", "NET45", "{9931206D-D9B6-47CB-9673-AB780F8C6371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kopigi.Net45", "NET45\Kopigi.Net45\Kopigi.Net45.csproj", "{49D752DB-A75D-4281-837A-A47C603C32F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kopigi.NetCore.UAP", "WinRT\Kopigi.NetCore.UAP\Kopigi.NetCore.UAP.csproj", "{FB189745-AD53-4096-9519-8D5F95F2483F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Unit Tests", "_Unit Tests", "{BF8C4FA5-7C11-4C55-B866-25D5FE9F0B16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTests\UnitTest\UnitTest.csproj", "{A27105C8-8F7A-49A7-98F9-F1D4A69A6DE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D752DB-A75D-4281-837A-A47C603C32F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D752DB-A75D-4281-837A-A47C603C32F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D752DB-A75D-4281-837A-A47C603C32F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D752DB-A75D-4281-837A-A47C603C32F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB189745-AD53-4096-9519-8D5F95F2483F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB189745-AD53-4096-9519-8D5F95F2483F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB189745-AD53-4096-9519-8D5F95F2483F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB189745-AD53-4096-9519-8D5F95F2483F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27105C8-8F7A-49A7-98F9-F1D4A69A6DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27105C8-8F7A-49A7-98F9-F1D4A69A6DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27105C8-8F7A-49A7-98F9-F1D4A69A6DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27105C8-8F7A-49A7-98F9-F1D4A69A6DE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC} = {09C0FDEA-5D29-4EE9-8386-DB490A264AE6}
+		{49D752DB-A75D-4281-837A-A47C603C32F6} = {9931206D-D9B6-47CB-9673-AB780F8C6371}
+		{FB189745-AD53-4096-9519-8D5F95F2483F} = {DEDCD8C8-D936-4D9B-BCD8-DF6E57EFDD49}
+		{A27105C8-8F7A-49A7-98F9-F1D4A69A6DE2} = {BF8C4FA5-7C11-4C55-B866-25D5FE9F0B16}
+	EndGlobalSection
+EndGlobal
