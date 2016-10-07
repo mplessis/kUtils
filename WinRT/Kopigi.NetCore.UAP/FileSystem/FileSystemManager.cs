@@ -14,7 +14,7 @@ namespace Kopigi.NetCore.UAP.FileSystem
     /// <summary>
     /// Permet de gérer les fichiers pour la technologie WinRT
     /// </summary>
-    public class FileSystemWinRt : IFileSystem
+    public class FileSystemManager : IFileSystem
     {
         /// <summary>
         /// A redéfinir aprés initialisation de la classe
@@ -24,7 +24,20 @@ namespace Kopigi.NetCore.UAP.FileSystem
         /// <summary>
         /// Indique si l'on utilise le stockage local, par défaut oui, mais peut être redéfini
         /// </summary>
-        private bool _useLocalFolder = true;
+        private bool _useLocalFolder;
+
+        #region cstor
+
+        public FileSystemManager()
+        {
+            _useLocalFolder = true;
+        }
+
+        public FileSystemManager(StorageEnum storage)
+        {
+            _useLocalFolder = storage == StorageEnum.Local;
+        }
+        #endregion
 
         /// <summary>
         /// Permet de supprimer un fichier du systéme
@@ -36,7 +49,8 @@ namespace Kopigi.NetCore.UAP.FileSystem
             try
             {
                 var folder = _useLocalFolder ? ApplicationData.Current.LocalFolder : ApplicationData.Current.RoamingFolder;
-                var file = await folder.GetFileAsync(string.Format("{0}.{1}", filePath, _extensionFile));
+                var fileName = !string.IsNullOrEmpty(_extensionFile) ? string.Format("{0}.{1}", filePath, _extensionFile) : filePath;
+                var file = await folder.GetFileAsync(fileName);
                 await file.DeleteAsync();
                 return true;
             }
@@ -45,6 +59,22 @@ namespace Kopigi.NetCore.UAP.FileSystem
                 return false;
             }
         }
+
+        /// <summary>
+        /// Permet de renvoyer le fichier demandé
+        /// </summary>
+        /// <param name="nameFile">Nom du fichier à rechercher</param>
+        /// <returns>Le fichier demandé</returns>
+        public async Task<object> GetFile(string nameFile)
+        {
+            var folder = _useLocalFolder ? ApplicationData.Current.LocalFolder : ApplicationData.Current.RoamingFolder;
+            if (await IsFileExist(nameFile))
+            {
+                return await folder.GetFileAsync(nameFile);
+            }
+            return null;
+        }
+
 
         /// <summary>
         /// Permet de savoir si le fichier existe 
@@ -105,7 +135,8 @@ namespace Kopigi.NetCore.UAP.FileSystem
         public async Task<string> ReadFile(string filePath)
         {
             var folder = _useLocalFolder ? ApplicationData.Current.LocalFolder : ApplicationData.Current.RoamingFolder;
-            var file = await folder.GetFileAsync(string.Format("{0}.{1}", filePath, _extensionFile));
+            var fileName = !string.IsNullOrEmpty(_extensionFile) ? string.Format("{0}.{1}", filePath, _extensionFile) : filePath;
+            var file = await folder.GetFileAsync(fileName);
             return await FileIO.ReadTextAsync(file);
         }
 
@@ -128,34 +159,48 @@ namespace Kopigi.NetCore.UAP.FileSystem
         }
 
         /// <summary>
-        /// Permet de persister des données dans le fichier spécifié
+        /// Permet de persister des données (en string) dans le fichier spécifié
         /// </summary>
         /// <param name="data">Données à persister</param>
         /// <param name="filePath">Fichier à écrire</param>
         /// <returns>Indique si l'opération s'est correctement déroulée</returns>
-        public async Task<bool> WriteInFile(string data, string filePath)
+        public async Task<object> WriteInFile(string data, string filePath)
         {
             try
             {
                 var folder = _useLocalFolder ? ApplicationData.Current.LocalFolder : ApplicationData.Current.RoamingFolder;
-                var file = await folder.CreateFileAsync(string.Format("{0}.{1}", filePath, _extensionFile), CreationCollisionOption.ReplaceExisting);
+                var fileName = !string.IsNullOrEmpty(_extensionFile) ? string.Format("{0}.{1}", filePath, _extensionFile) : filePath;
+                var file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+                await FileIO.WriteTextAsync(file, data);
 
-                using (var s = await file.OpenAsync(FileAccessMode.ReadWrite))
-                {
-                    var os = s.GetOutputStreamAt(0);
-                    var dW = new DataWriter(os);
-                    dW.WriteString(data);
-                    await dW.StoreAsync();
-                    await os.FlushAsync();
-                    dW.DetachStream();
-                    os.Dispose();
-                    s.Dispose();
-                }
-                return true;
+                return file;
             }
             catch (Exception e)
             {
-                return false;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Permet de persister des données (en bytes) dans le fichier spécifié
+        /// </summary>
+        /// <param name="data">Données à persister</param>
+        /// <param name="filePath">Fichier à écrire</param>
+        /// <returns>Indique si l'opération s'est correctement déroulée</returns>
+        public async Task<object> WriteInFile(byte[] data, string filePath)
+        {
+            try
+            {
+                var folder = _useLocalFolder ? ApplicationData.Current.LocalFolder : ApplicationData.Current.RoamingFolder;
+                var fileName = !string.IsNullOrEmpty(_extensionFile) ? string.Format("{0}.{1}", filePath, _extensionFile) : filePath;
+                var file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+                await FileIO.WriteBytesAsync(file, data);
+                
+                return file;
+            }
+            catch (Exception e)
+            {
+                return null;
             }
         }
     }

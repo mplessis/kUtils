@@ -50,7 +50,14 @@
     <Compile Include="Cryptography\Base64.cs" />
     <Compile Include="Cryptography\Md5.cs" />
     <Compile Include="Cryptography\Sha256.cs" />
+    <Compile Include="Helpers\StringEnumHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Portable\Kopigi.Portable\Kopigi.Portable.csproj">
+      <Project>{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}</Project>
+      <Name>Kopigi.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

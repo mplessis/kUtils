@@ -18,6 +18,13 @@ namespace Kopigi.Portable.Interfaces
         Task<bool> DeleteFile(string filePath);
 
         /// <summary>
+        /// Permet de renvoyer le fichier demandé
+        /// </summary>
+        /// <param name="nameFile">Nom du fichier à rechercher</param>
+        /// <returns>Le fichier demandé</returns>
+        Task<object> GetFile(string nameFile);
+
+        /// <summary>
         /// Permet de savoir si le fichier est présent 
         /// </summary>
         /// <param name="nameFile">Nom du fichier à rechercher</param>
@@ -63,6 +70,14 @@ namespace Kopigi.Portable.Interfaces
         /// <param name="data">Données à persister</param>
         /// <param name="filePath">Fichier à écrire</param>
         /// <returns>Indique si l'opération s'est correctement déroulée</returns>
-        Task<bool> WriteInFile(string data, string filePath);
+        Task<object> WriteInFile(string data, string filePath);
+
+        /// <summary>
+        /// Permet de persister des données (en bytes) dans le fichier spécifié
+        /// </summary>
+        /// <param name="data">Données à persister</param>
+        /// <param name="filePath">Fichier à écrire</param>
+        /// <returns>Indique si l'opération s'est correctement déroulée</returns>
+        Task<object> WriteInFile(byte[] data, string filePath);
     }
 }

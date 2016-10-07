@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class\InternetConnectionChangedEventArgs.cs" />
+    <Compile Include="Class\StringEnumAttribute.cs" />
     <Compile Include="Class\StringFormatUseCase.cs" />
     <Compile Include="Converters\Format\StringFormatConverter.cs" />
     <Compile Include="Converters\Format\StringFormatLCaseConverter.cs" />

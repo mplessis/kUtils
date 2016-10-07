@@ -29,7 +29,7 @@ namespace Kopigi.Portable.Data.POCO
         public async static Task<bool> Persist<T>(this T objet) where T : KPoco
         {
             var dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(objet);
-            return await SimpleIoc.Default.GetInstance<IFileSystem>().WriteInFile(dataJson, KPocoHelper.GetFileNameFromObject(objet));
+            return (await SimpleIoc.Default.GetInstance<IFileSystem>().WriteInFile(dataJson, KPocoHelper.GetFileNameFromObject(objet))) != null;
         }
     }
 }
