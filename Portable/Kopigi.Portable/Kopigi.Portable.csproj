@@ -55,6 +55,7 @@
     <Compile Include="Data\POCO\KPoco.cs" />
     <Compile Include="Data\POCO\KPocoHelper.cs" />
     <Compile Include="Enums\StorageEnum.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\WatchHelper.cs" />
     <Compile Include="Interfaces\ICryptographyService.cs" />
     <Compile Include="Interfaces\IFileSystem.cs" />
