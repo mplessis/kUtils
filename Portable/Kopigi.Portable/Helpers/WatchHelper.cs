@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kopigi.Portable.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,6 +11,23 @@ namespace Kopigi.Portable.Helpers
     public static class WatchHelper
     {
         private static readonly List<InstanceWatch> Instances = new List<InstanceWatch>();
+
+        /// <summary>
+        /// Permet de vider les instances de surveillance
+        /// </summary>
+        public static void Clear()
+        {
+            Instances.Clear();
+        }
+
+        /// <summary>
+        /// Permet de vider les instances avec le label demandé
+        /// </summary>
+        /// <param name="label"></param>
+        public static void Clear(string label)
+        {
+            Instances.RemoveAll(i => i.Label == label);
+        }
 
         /// <summary>
         /// Permet de demarrer une nouvelle surveillance de temps
@@ -46,6 +64,27 @@ namespace Kopigi.Portable.Helpers
                 return watch;
             }
             return null;
+        }
+
+        /// <summary>
+        /// Permet de faire la somme des instances comportant le label demandé
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="logTime"></param>
+        /// <returns></returns>
+        public static double SumWatch(string label, bool logTime = true)
+        {
+            var watchs = Instances.Where(i => i.Label == label);
+            if (watchs.Any())
+            {
+                var sum = watchs.Sum(i => i.Elapsed.TotalSeconds);
+                if (logTime)
+                {
+                    Debug.WriteLine($"Temps d'execution total de {label} : {sum} s");
+                }
+                return sum;
+            }
+            throw new NoWatchFindException(label);
         }
     }
 
