@@ -21,6 +21,13 @@ namespace Kopigi.Portable.Interfaces
         void InitializeSettings(Dictionary<string, object> settings, bool useRoamingSettings = false);
 
         /// <summary>
+        /// Détermine si le paramètre est déja déclaré ou non
+        /// </summary>
+        /// <param name="name">Nom du paramèetre</param>
+        /// <returns>Indique si il existe ou pas</returns>
+        bool IsExist(string name);
+
+        /// <summary>
         /// Enregistre un paramétre
         /// </summary>
         /// <param name="name">Nom du paramétre</param>

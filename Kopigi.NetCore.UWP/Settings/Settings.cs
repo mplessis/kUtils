@@ -34,6 +34,18 @@ namespace Kopigi.NetCore.UAP.Settings
         }
 
         /// <summary>
+        /// Détermine si le paramètre est déja déclaré ou non
+        /// </summary>
+        /// <param name="name">Nom du paramèetre</param>
+        /// <returns>Indique si il existe ou pas</returns>
+        public bool IsExist(string name)
+        {
+            var localSettings = _useRoamingFolder ? Windows.Storage.ApplicationData.Current.RoamingSettings : Windows.Storage.ApplicationData.Current.LocalSettings;
+            var value = localSettings.Values[name];
+            return value != null;
+        }
+
+        /// <summary>
         /// Enregistre un paramétre
         /// </summary>
         /// <param name="name">Nom du paramétre</param>

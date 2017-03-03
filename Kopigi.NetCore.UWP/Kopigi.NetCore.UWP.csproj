@@ -107,16 +107,44 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\InternetConnectionChangedEventArgs.cs" />
+    <Compile Include="Class\StringEnumAttribute.cs" />
+    <Compile Include="Class\StringFormatUseCase.cs" />
+    <Compile Include="Converters\Format\StringFormatConverter.cs" />
+    <Compile Include="Converters\Format\StringFormatLCaseConverter.cs" />
+    <Compile Include="Converters\Format\StringFormatUCaseConverter.cs" />
+    <Compile Include="Convert\ByteConvert.cs" />
+    <Compile Include="Convert\JsonConvert.cs" />
+    <Compile Include="Cryptography\Base64.cs" />
+    <Compile Include="Cryptography\Md5.cs" />
+    <Compile Include="Cryptography\Sha256.cs" />
+    <Compile Include="Data\POCO\Extensions.cs" />
+    <Compile Include="Data\POCO\KPoco.cs" />
+    <Compile Include="Data\POCO\KPocoHelper.cs" />
+    <Compile Include="Enums\StorageEnum.cs" />
+    <Compile Include="Exceptions\NoWatchFindException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="FileSystem\FileSystemManager.cs" />
     <Compile Include="Helpers\StringEnumHelper.cs" />
+    <Compile Include="Helpers\WatchHelper.cs" />
+    <Compile Include="Interfaces\ICryptographyService.cs" />
+    <Compile Include="Interfaces\IFileSystem.cs" />
+    <Compile Include="Interfaces\INetworkService.cs" />
+    <Compile Include="Interfaces\IResources.cs" />
+    <Compile Include="Interfaces\ISettings.cs" />
+    <Compile Include="Media\MediaAudioRecorder.cs" />
+    <Compile Include="Media\MediaReader.cs" />
+    <Compile Include="Object\DynamicObjet.cs" />
+    <Compile Include="Object\NotifyPropertyChanged.cs" />
+    <Compile Include="Object\Switch.cs" />
+    <Compile Include="Resources\Resources.cs" />
+    <Compile Include="Services\CryptographyService.cs" />
+    <Compile Include="Services\HttpClientHelper.cs" />
+    <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="Settings\Settings.cs" />
     <Compile Include="UI\UIHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Kopigi.NetCore.UWP.rd.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Portable\Kopigi.Portable\Kopigi.Portable.csproj">
-      <Project>{77CC17F8-3E8B-4A60-B1CD-2D00F24D8DAC}</Project>
-      <Name>Kopigi.Portable</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
