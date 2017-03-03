@@ -1,4 +1,4 @@
 # kUtils
 kUtils est un ensemble de classes disponibles pour UWP
 
-La version 1.8.4 (branche 1.8.4) est disponible pour les plateforme WPF/WinRT/UWP. La version Master qui correspond à la version >2.0 n'est plus compatible qu'avec la plateforme Universal Window Platform
+La version 2 ne contient plus les classes pour WPF et WinRT (seulement UWP), pour cela, la version 1.8.4 (branche 1.8.4) est disponible pour les plateforme WPF/WinRT/UWP (Le package NuGet reste disponible mais n'évoluera plus).
