@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using GalaSoft.MvvmLight.Ioc;
 using Kopigi.Portable.Enums;
 using Kopigi.Portable.Interfaces;
 
@@ -28,6 +29,7 @@ namespace Kopigi.NetCore.UAP.FileSystem
 
         #region cstor
 
+        [PreferredConstructor]
         public FileSystemManager()
         {
             _useLocalFolder = true;
