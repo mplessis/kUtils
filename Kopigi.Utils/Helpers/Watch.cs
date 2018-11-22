@@ -75,7 +75,7 @@ namespace Kopigi.Utils.Helpers
             var instancesFound = _instances.Where(i => i.Label == label);
             if (instancesFound.Any())
             {
-                var sum = ConvertTimeSumToTimeType(instancesFound.Sum(i => i.Elapsed.Milliseconds), timeType);
+                var sum = ConvertTimeSumToTimeType(instancesFound.Sum(i => i.Elapsed.TotalMilliseconds), timeType);
                 if (logTime)
                 {
                     Debug.WriteLine($"Execution time of {label} : {sum} in {StringEnum.GetStringValue(timeType)}");
@@ -85,7 +85,7 @@ namespace Kopigi.Utils.Helpers
             throw new NoWatchFindException(label);
         }
 
-        private static double ConvertTimeSumToTimeType(int timeSum, TimeType timeType)
+        private static double ConvertTimeSumToTimeType(double timeSum, TimeType timeType)
         {
             switch (timeType)
             {
