@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ListExtensionShould.cs" />
     <Compile Include="Helpers\StringEnumShould.cs" />
     <Compile Include="Helpers\WatchShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
