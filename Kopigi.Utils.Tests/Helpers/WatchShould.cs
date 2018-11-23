@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Kopigi.Utils.Class;
+using Kopigi.Utils.Helpers;
+using NFluent;
+using NUnit.Framework;
+using System;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using Kopigi.Utils.Class;
-using Kopigi.Utils.Helpers;
-using NFluent;
-using NSubstitute.Routing.Handlers;
-using NUnit.Framework;
 
 namespace Kopigi.Utils.Tests.Helpers
 {
@@ -47,7 +43,7 @@ namespace Kopigi.Utils.Tests.Helpers
         [Test]
         public void Return_null_if_no_watch_found_on_stop_watch()
         {
-            var guidInstance = Watch.StartWatch("watch_test");
+            Watch.StartWatch("watch_test");
             Thread.Sleep(100);
             var instance = Watch.StopWatch(Guid.NewGuid());
             Check.That(instance).IsEqualTo(null);
@@ -68,11 +64,11 @@ namespace Kopigi.Utils.Tests.Helpers
         {
             var guidInstanceOne = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceOne = Watch.StopWatch(guidInstanceOne);
+            Watch.StopWatch(guidInstanceOne);
 
             var guidInstanceTwo = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceTwo = Watch.StopWatch(guidInstanceTwo);
+            Watch.StopWatch(guidInstanceTwo);
 
             Check.That(Watch.SumWatch("watch_test", TimeType.Milliseconds) >= 200).IsTrue();
         }
@@ -82,11 +78,11 @@ namespace Kopigi.Utils.Tests.Helpers
         {
             var guidInstanceOne = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceOne = Watch.StopWatch(guidInstanceOne);
+            Watch.StopWatch(guidInstanceOne);
 
             var guidInstanceTwo = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceTwo = Watch.StopWatch(guidInstanceTwo);
+            Watch.StopWatch(guidInstanceTwo);
 
             Check.That(Watch.SumWatch("watch_test", TimeType.Seconds) >= 0.19).IsTrue();
         }
@@ -96,11 +92,11 @@ namespace Kopigi.Utils.Tests.Helpers
         {
             var guidInstanceOne = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceOne = Watch.StopWatch(guidInstanceOne);
+            Watch.StopWatch(guidInstanceOne);
 
             var guidInstanceTwo = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceTwo = Watch.StopWatch(guidInstanceTwo);
+            Watch.StopWatch(guidInstanceTwo);
 
             Check.That(Watch.SumWatch("watch_test", TimeType.Minutes) >= 0.0029).IsTrue();
         }
@@ -110,11 +106,11 @@ namespace Kopigi.Utils.Tests.Helpers
         {
             var guidInstanceOne = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceOne = Watch.StopWatch(guidInstanceOne);
+            Watch.StopWatch(guidInstanceOne);
 
             var guidInstanceTwo = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceTwo = Watch.StopWatch(guidInstanceTwo);
+            Watch.StopWatch(guidInstanceTwo);
 
             Check.ThatCode(() =>
                 Watch.SumWatch("watch_test", (TimeType) Int32.MaxValue)
@@ -126,11 +122,11 @@ namespace Kopigi.Utils.Tests.Helpers
         {
             var guidInstanceOne = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceOne = Watch.StopWatch(guidInstanceOne);
+            Watch.StopWatch(guidInstanceOne);
 
             var guidInstanceTwo = Watch.StartWatch("watch_test");
             Thread.Sleep(100);
-            var instanceTwo = Watch.StopWatch(guidInstanceTwo);
+            Watch.StopWatch(guidInstanceTwo);
 
             Check.ThatCode(() =>
                     Watch.SumWatch("watch_test_not_found", TimeType.Milliseconds))
