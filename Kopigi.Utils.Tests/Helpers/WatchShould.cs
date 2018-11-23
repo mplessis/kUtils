@@ -105,6 +105,21 @@ namespace Kopigi.Utils.Tests.Helpers
             Check.That(Watch.SumWatch("watch_test", TimeType.Minutes) >= 0.0029).IsTrue();
         }
 
+        [Test]
+        public void Throw_ArgumentException_for_TimeType_unknow()
+        {
+            var guidInstanceOne = Watch.StartWatch("watch_test");
+            Thread.Sleep(100);
+            var instanceOne = Watch.StopWatch(guidInstanceOne);
+
+            var guidInstanceTwo = Watch.StartWatch("watch_test");
+            Thread.Sleep(100);
+            var instanceTwo = Watch.StopWatch(guidInstanceTwo);
+
+            Check.ThatCode(() =>
+                Watch.SumWatch("watch_test", (TimeType) Int32.MaxValue)
+            ).Throws<ArgumentException>();
+        }
 
         [Test]
         public void Throw_NoWatchFindException_if_no_watch_instances_found_for_label()

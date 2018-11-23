@@ -96,7 +96,7 @@ namespace Kopigi.Utils.Helpers
                 case TimeType.Milliseconds:
                     return timeSum;
                 default:
-                    return timeSum;
+                    throw new ArgumentOutOfRangeException("Unknown TimeType" + timeType);
             }
         }
     }
