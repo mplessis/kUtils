@@ -95,8 +95,9 @@ namespace Kopigi.Utils.Helpers
                     return TimeSpan.FromMilliseconds(timeSum).TotalSeconds;
                 case TimeType.Milliseconds:
                     return timeSum;
+                default:
+                    return timeSum;
             }
-            return 0;
         }
     }
 }

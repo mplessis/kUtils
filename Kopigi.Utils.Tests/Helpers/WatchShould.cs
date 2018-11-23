@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -118,6 +120,28 @@ namespace Kopigi.Utils.Tests.Helpers
             Check.ThatCode(() =>
                     Watch.SumWatch("watch_test_not_found", TimeType.Milliseconds))
                 .Throws<NoWatchFindException>();
+        }
+
+        [Test]
+        public void Return_type_NoWatchFindException_is_serializable()
+        {
+            var assembly = typeof(NoWatchFindException).Assembly;
+            var unserializableTypes = (from t in assembly.GetTypes() where t.IsSerializable select t).ToArray();
+            Check.That(unserializableTypes.Any()).IsTrue();
+        }
+
+        [Test]
+        public void Return_NoWatchFindException_serialization()
+        {
+            var e = new NoWatchFindException("Test NoWatchFindException");
+            using (Stream s = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(s, e);
+                s.Position = 0;
+                e = (NoWatchFindException)formatter.Deserialize(s);
+            }
+            Check.That(e.Message).IsEqualTo("No watch found for label Test NoWatchFindException");
         }
     }
 }

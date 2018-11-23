@@ -14,7 +14,8 @@ namespace Kopigi.Utils.Class
             : base($"No watch found for label {label}", null)
         { }
 
-        protected NoWatchFindException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected NoWatchFindException(SerializationInfo info, StreamingContext context)
+            : base(info, context)
         { }
     }
 }
