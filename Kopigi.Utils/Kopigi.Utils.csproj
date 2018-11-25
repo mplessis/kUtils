@@ -2,11 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>2.1.0</Version>
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Marc Plessis</Authors>
+    <PackageLicenseUrl>https://github.com/mplessis/kUtils/blob/2.1/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mplessis/kUtils</PackageProjectUrl>
+    <PackageIconUrl>http://www.kopigi.fr/tools/kutils/kutils.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/mplessis/kUtils</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>.NET Standard</PackageTags>
+    <PackageReleaseNotes>Portage de kUtils sur .NET Standard</PackageReleaseNotes>
+    <Description>Classes diverses sur .NET Standard</Description>
+    <Copyright>Kopigi 2018</Copyright>
   </PropertyGroup>
 
 </Project>
