@@ -13,6 +13,6 @@
       <language>fr-FR</language>
   </metadata>
   <files>
-    <file src="bin\Release\kUtils.dll" target="lib" />
+    <file src="bin\Release\Kopigi.Utils.dll" target="lib" />
   </files>
 </package>
