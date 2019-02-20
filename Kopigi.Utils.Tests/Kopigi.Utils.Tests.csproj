@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ListExtensionShould.cs" />
+    <Compile Include="Extensions\ObservableCollectionExtensionsShould.cs" />
     <Compile Include="Helpers\StringEnumShould.cs" />
     <Compile Include="Helpers\WatchShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,7 +11,6 @@ namespace Kopigi.Utils.Extensions
         /// </summary>
         /// <param name="list">Liste d'objets à séparer</param>
         /// <param name="separate">Caractére de séparation</param>
-        /// <returns></returns>
         public static string ToSeparateByChar<T>(this IEnumerable<T> list, char separate)
         {
             if (list.Any())
