@@ -2,7 +2,7 @@
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mplessis_kUtils&metric=coverage)](https://sonarcloud.io/api/project_badges/measure?project=mplessis_kUtils&metric=coverage)
 
-# kUtils
-kUtils est un ensemble de classes disponibles pour .NET Standard
+# Kopigi.Utils
+Kopigi.Utils est un ensemble de classes disponibles pour .NET Standard
 
 La version 2.1 devient compatible .NET Standard.
